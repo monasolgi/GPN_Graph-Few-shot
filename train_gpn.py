@@ -188,15 +188,15 @@ if __name__ == '__main__':
                 meta_test_f1.append(f1_test)
             print("Meta-valid_Accuracy: {}, Meta-valid_F1: {}".format(np.array(meta_test_acc).mean(axis=0),
                                                                         np.array(meta_test_f1).mean(axis=0)))
-            # testing
-            meta_test_acc = []
-            meta_test_f1 = []
-            for idx in range(meta_test_num):
-                id_support, id_query, class_selected = test_pool[idx]
-                acc_test, f1_test = test(class_selected, id_support, id_query, n_way, k_shot)
-                meta_test_acc.append(acc_test)
-                meta_test_f1.append(f1_test)
-            print("Meta-Test_Accuracy: {}, Meta-Test_F1: {}".format(np.array(meta_test_acc).mean(axis=0),
-                                                                        np.array(meta_test_f1).mean(axis=0)))
+    # testing
+    meta_test_acc = []
+    meta_test_f1 = []
+    for idx in range(meta_test_num):
+        id_support, id_query, class_selected = test_pool[idx]
+        acc_test, f1_test = test(class_selected, id_support, id_query, n_way, k_shot)
+        meta_test_acc.append(acc_test)
+        meta_test_f1.append(f1_test)
+    print("Meta-Test_Accuracy: {}, Meta-Test_F1: {}".format(np.array(meta_test_acc).mean(axis=0),
+                                                                np.array(meta_test_f1).mean(axis=0)))
 
     print("Total time elapsed: {:.4f}s".format(time.time() - t_total))
